@@ -1,0 +1,32 @@
+pasta
+  macaroni
+  skruer
+  tortelini
+  ravioli
+  hjul
+  penne
+
+ramen nudler
+ris nudler
+minut nudler
+soya
+tofu
+
+Kødsovs
+ketchup
+parmesan
+pesto
+kødboller
+
+Platformspil regler:
+powerups
+powerup boxes
+huller
+fjender
+  skyde dem
+  hoppe på dem
+fjedre
+opdrift vinde
+smuldre mursten
+ringe / mønter
+loops
