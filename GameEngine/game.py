@@ -9,39 +9,84 @@ import math
 import pygame
 import Scene
 
-# Screen size
-screen_width = 900
-screen_height = 600
+class runGame:
+    # Screen size
+    screen_width = 1024
+    screen_height = 768
 
-# Start pygame
-pygame.init()
+    # Size of block
+    sizeOfBlock = 32
 
-# Screen size
-screen = pygame.display.set_mode(
-    [screen_width, screen_height])
+    # Screen size
+    screen = pygame.display.set_mode([screen_width, screen_height])
 
-pygame.display.set_caption('Obvious!')
+    def __init__(self):
+        # Start pygame
+        pygame.init()
 
-ended = False
-clock = pygame.time.Clock()
+        pygame.display.set_caption('Obvious!')
 
-scene = Scene()
+        ended = False
+        clock = pygame.time.Clock()
 
-pygame.mixer.init()
+        scene = Scene()
 
-while not ended:
-    # Run 30
-    clock.tick(30)
+        pygame.mixer.init()
 
-    # Clear screen
-    screen.fill([0,0,0])
-    screen.blit(pygame.image.load('back.png'), (0,0))
+        loadFromImage("levels/1.png")
 
-    screen.blit(pygame.image.load('mario.png'), (100,500))
-    # Update double buffered screen
-    pygame.display.flip()
+        while not ended:
+            # Run 30
+            clock.tick(30)
+
+            # Clear screen
+            screen.fill([0,0,0])
+            screen.blit(pygame.image.load('back.png'), (0,0))
+
+            screen.blit(pygame.image.load('mario.png'), (100,500))
+            # Update double buffered screen
+            pygame.display.flip()
+
+        pygame.quit()
+
+
+    def loadFromImage(filename):
+        try:
+            image = pygame.image.load(filename)
+        except pygame.error, message:
+            print "Cannot load image: ", filename
+            raise SystemExit, message
+
+            for y in range(1, image.get_height(), 32):
+                for x in range(1, image.get_width(), 32):
+                    color = image.get_at((x, y))
+                    location = [x, y]
+
+                    print str(color)
+                    print str(location)
+
+                    # block1_top
+                    if color == pygame.Color(255, 240, 0, 0):
+
+                    # block1_dirt
+                    elif color == pygame.Color(255, 0, 0, 0):
+
+                    # block1_right
+                    elif color == pygame.Color(174, 140, 0, 0):
+
+                    # block1_right_side
+                    elif color == pygame.Color(211, 211, 211, 0):
+
+                    # block1_left
+                    elif color == pygame.Color(0, 0, 255, 0):
+
+                    # block1_left_side
+                    elif color == pygame.Color(0, 255, 255, 0):
 
 
 
-pygame.quit()
+#loadFromImage("/Users/dsdeniso/Documents/GitHub/discourse/public/images/emoji/apple/-1.png")
 
+game = runGame()
+
+game.start()
