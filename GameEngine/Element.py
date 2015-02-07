@@ -44,4 +44,3 @@ class Element:
 	# update all element data (delta time is in milliseconds)
 	# keyEvent is only if key has been pressed
 	def tick(deltaTime, keyEvent=False):
-		

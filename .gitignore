@@ -1,9 +1,10 @@
 # =============== #
 # Unity generated #
 # =============== #
+*.pdf
 Temp/
 Library/
-
+Unity/
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
