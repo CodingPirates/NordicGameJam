@@ -1,5 +1,7 @@
 class Scene:
-	def addElement():
+	def addElement(element: Element):
+
 	def removeElement():
 	def getSurface():
 	def tick(deltaTime, keyEvent=False):
+
