@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 import random
 import math
 import pygame
+import Scene
 
 # Screen size
 screen_width = 900
@@ -24,6 +25,8 @@ pygame.display.set_caption('Obvious!')
 ended = False
 clock = pygame.time.Clock()
 
+scene = Scene()
+
 pygame.mixer.init()
 
 while not ended:
@@ -37,3 +40,4 @@ while not ended:
     pygame.display.flip()
     
 pygame.quit()
+
