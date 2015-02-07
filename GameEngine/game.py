@@ -27,12 +27,13 @@ clock = pygame.time.Clock()
 pygame.mixer.init()
 
 while not ended:
-    # Tik ti gange i sekundet
-    clock.tick(15)
+    # Run 30
+    clock.tick(30)
     
-    # Udfyld skærmen med hvid
+    # Clear screen
     screen.fill([0,0,0])
     
+    # Update double buffered screen
     pygame.display.flip()
     
 pygame.quit()
