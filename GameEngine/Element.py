@@ -17,9 +17,7 @@ class Element:
 	def getLayer():
 
 	# update all element data (delta time is in milliseconds)
-	def tick(deltaTime):
+	# keyEvent is only if key has been pressed
+	def tick(deltaTime, keyEvent=False):
 
-	# take player controller events
-	def control(keyEvent):
 
-	
