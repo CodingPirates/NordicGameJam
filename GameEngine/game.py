@@ -32,12 +32,16 @@ pygame.mixer.init()
 while not ended:
     # Run 30
     clock.tick(30)
-    
+
     # Clear screen
     screen.fill([0,0,0])
-    
+    screen.blit(pygame.image.load('back.png'), (0,0))
+
+    screen.blit(pygame.image.load('mario.png'), (100,500))
     # Update double buffered screen
     pygame.display.flip()
-    
+
+
+
 pygame.quit()
 
