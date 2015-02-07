@@ -1,32 +1,32 @@
 #!/usr/bin/env python
 # Encoding: UTF-8
 #
-# Space Invaders til Coding Pirates
+# Obvious til Coding Pirates
 
 from __future__ import unicode_literals
 import random
 import math
 import pygame
 
-# Skærmstørrelse
+# Screen size
 screen_width = 900
 screen_height = 600
 
 # Start pygame
 pygame.init()
 
-# Skærmstørrelse
+# Screen size
 screen = pygame.display.set_mode(
     [screen_width, screen_height])
 
 pygame.display.set_caption('Obvious!')
 
-slut = False
+ended = False
 clock = pygame.time.Clock()
 
 pygame.mixer.init()
 
-while not slut:
+while not ended:
     # Tik ti gange i sekundet
     clock.tick(15)
     
