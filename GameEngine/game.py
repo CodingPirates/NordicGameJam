@@ -30,18 +30,21 @@ scene = Scene()
 pygame.mixer.init()
 
 while not ended:
-    # Run 30
+    # Run 30 fps
     clock.tick(30)
+    deltaTime = clock.get_time()
+
+    if pygame.event.peek():
+        for event in pygame.event.get():
+            scene.tick(deltaTime, event)
+    else:
+        # no events - just update elements
+        scene.tick(deltaTime)
 
     # Clear screen
-    screen.fill([0,0,0])
-    screen.blit(pygame.image.load('back.png'), (0,0))
+    screen.blit(scene.getSurface(), (0,0))
 
-    screen.blit(pygame.image.load('mario.png'), (100,500))
     # Update double buffered screen
     pygame.display.flip()
 
-
-
 pygame.quit()
-
