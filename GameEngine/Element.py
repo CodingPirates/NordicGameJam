@@ -2,10 +2,13 @@
 class Element:
 
 	def __init__(self, xPos, yPos, size, image, layer):
-		self.pos   = (x,y)
+		self.pos   = (xPos,yPos)
 		self.size  = size
 		self.image = image
 		self.layer = layer
+
+	def setScene(scene):
+		self.scene = scene
 
 	# get get lower left pixel position
 	def getPosition():
@@ -29,10 +32,8 @@ class Element:
 		return self.layer
 
 	def setPosition(Newpos):
-		if (newPos[0] < 0 || newPos[0] > 1024):
-			print "You gone fucked with the x postion"
-			break
-		elif(newPos[0] < 0 || newPos[0] > )
+		if (newPos[0] < 0 or newPos[0] > 1024):
+			raise Exception("You gone fucked with the x postion")
 		else:
 			pos[0] = newPos[0]
 			pos[1] = newPos[1]
@@ -43,4 +44,4 @@ class Element:
 
 	# update all element data (delta time is in milliseconds)
 	# keyEvent is only if key has been pressed
-	def tick(deltaTime, keyEvent=False):
+	#def tick(deltaTime, keyEvent=False):

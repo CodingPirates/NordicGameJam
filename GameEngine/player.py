@@ -1,6 +1,6 @@
 import pygame, sys, Element
 
-class Player (Element):
+class Player (Element.Element):
 
 	# The player controls, no keyboard handling is done n this class all
 	movementAcc = 2
@@ -27,6 +27,6 @@ class Player (Element):
 		    movementSpeed = -5
 		setPosition(getPostion()[0]+movementSpeed, getPostion()[1])
 
-	def tick(deltaTime, keyEvent=False):
-	    self.anim(deltaTime)
+	def tick(self, deltaTime, keyEvent=False):
+		self.anim(deltaTime)
 		self.updatePos(deltaTime)

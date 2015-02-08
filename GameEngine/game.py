@@ -25,7 +25,7 @@ pygame.display.set_caption('Obvious!')
 ended = False
 clock = pygame.time.Clock()
 
-scene = Scene()
+scene = Scene.Scene()
 
 pygame.mixer.init()
 

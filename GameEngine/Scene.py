@@ -1,27 +1,33 @@
-class Scene:
+import Element
+import player
+import pygame
+import Viewport
 
+class Scene():
     def __init__(self):
-    	# empty list of elements
-    	player = Player()
-    	this.elements = [player]
-    	this.viewport = this.Viewport(player)
+        # empty list of elements
+        playerImage = pygame.image.load('./Graphics/Player/player_standing.png')
+        playerImage = playerImage.convert()
+        thePlayer = player.Player(20, 60, playerImage.get_size(), playerImage, 11)
+        self.elements = [thePlayer]
+        self.viewport = Viewport.Viewport(thePlayer)
 
-	def addElement(element: Element):
-		element.setScene(this)
-		this.elements[] = element
+    def addElement(element):
+        element.setScene(this)
+        this.elements.add(element)
 
-	def removeElement(element):
-		elements.remove(element)
+    def removeElement(element):
+        elements.remove(element)
 
-	def getSurface():
-		this.viewport.getSurface()
+    def getSurface():
+        self.viewport.getSurface()
 
-	def tick(deltaTime, keyEvent=False):
-		# iterate over all elements and update their state
-		for currentElement in this.elements:
-			currentElement.tick(deltaTime)
+    def tick(self, deltaTime, keyEvent=False):
+        # iterate over all elements and update their state
+        for currentElement in self.elements:
+            currentElement.tick(deltaTime)
 
-	def control(event):
-		# iterate over all elements and update their state
-		for currentElement in this.elements:
-			currentElement.tick(deltaTime, keyEvent)
+    def control(event):
+        # iterate over all elements and update their state
+        for currentElement in self.elements:
+            currentElement.tick(deltaTime, keyEvent)
