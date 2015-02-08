@@ -46,27 +46,31 @@ class runGame:
 
                     # block1_top
                     if color == pygame.Color(255, 240, 0, 0):
-                        dummy=False;
+                        dummy = False
 
                     # block1_dirt
                     elif color == pygame.Color(255, 0, 0, 0):
-                        dummy=False;
+                        dummy = False
 
                     # block1_right
                     elif color == pygame.Color(174, 140, 0, 0):
-                        dummy=False;
+                        dummy = False
 
                     # block1_right_side
                     elif color == pygame.Color(211, 211, 211, 0):
-                        dummy=False;
+                        dummy = False
 
                     # block1_left
                     elif color == pygame.Color(0, 0, 255, 0):
-                        dummy=False;
+                        dummy = False
 
                     # block1_left_side
                     elif color == pygame.Color(0, 255, 255, 0):
-                        dummy=False;
+                        dummy = False
+
+                    # block2
+                    elif color == pygame.Color(0, 0, 0, 0):
+                        dummy = False
 
     def start(self):
 
@@ -94,7 +98,7 @@ class runGame:
             # Update double buffered screen
             pygame.display.flip()
 
-            
+
 
 game = runGame()
 
