@@ -12,22 +12,22 @@ class Scene():
         self.elements = [thePlayer]
         self.viewport = Viewport.Viewport(thePlayer)
 
-    def addElement(element):
+    def addElement(self, element):
         element.setScene(this)
         this.elements.add(element)
 
-    def removeElement(element):
+    def removeElement(self, element):
         elements.remove(element)
 
-    def getSurface():
-        self.viewport.getSurface()
+    def getSurface(self):
+        return self.viewport.getSurface()
 
     def tick(self, deltaTime, keyEvent=False):
         # iterate over all elements and update their state
         for currentElement in self.elements:
             currentElement.tick(deltaTime)
 
-    def control(event):
+    def control(self, event):
         # iterate over all elements and update their state
         for currentElement in self.elements:
             currentElement.tick(deltaTime, keyEvent)

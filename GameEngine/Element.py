@@ -1,5 +1,5 @@
 # This class is used for creating screen elements
-class Element:
+class Element(object):
 
 	def __init__(self, xPos, yPos, size, image, layer):
 		self.pos   = (xPos,yPos)
@@ -7,19 +7,19 @@ class Element:
 		self.image = image
 		self.layer = layer
 
-	def setScene(scene):
+	def setScene(self, scene):
 		self.scene = scene
 
 	# get get lower left pixel position
-	def getPosition():
+	def getPosition(self):
 		return self.pos
 
 	# get box surrounding element (the size of element)
-	def getBoundingBox():
+	def getBoundingBox(self):
 		return self.size
 
 	# get the current Image for this element
-	def getSurface():
+	def getSurface(self):
 		return self.image
 
 	# get depth in image
@@ -28,17 +28,17 @@ class Element:
 	# 10: Enemies
 	# 11: Player
 	# 12: Foreground elements
-	def getLayer():
+	def getLayer(self):
 		return self.layer
 
-	def setPosition(Newpos):
+	def setPosition(self, Newpos):
 		if (newPos[0] < 0 or newPos[0] > 1024):
 			raise Exception("You gone fucked with the x postion")
 		else:
 			pos[0] = newPos[0]
 			pos[1] = newPos[1]
 
-	def setSurfaceAndBox(image, size):
+	def setSurfaceAndBox(self, image, size):
 		self.image = image
 		self.size  = size
 

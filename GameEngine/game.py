@@ -9,42 +9,87 @@ import math
 import pygame
 import Scene
 
-# Screen size
-screen_width = 900
-screen_height = 600
+class runGame:
+    def __init__(self):
+        # Screen size
+        screen_width = 1024
+        screen_height = 768
 
-# Start pygame
-pygame.init()
+        # Size of block
+        sizeOfBlock = 32
 
-# Screen size
-screen = pygame.display.set_mode(
-    [screen_width, screen_height])
+        # Screen size
+        self.screen = pygame.display.set_mode([screen_width, screen_height])
 
-pygame.display.set_caption('Obvious!')
+        pygame.mixer.init()
 
-ended = False
-clock = pygame.time.Clock()
+        # Start pygame
+        pygame.init()
 
-scene = Scene.Scene()
+        pygame.display.set_caption('Obvious!')
 
-pygame.mixer.init()
+        self.scene = Scene.Scene()
+        self.ended = False
+        self.clock = pygame.time.Clock()
 
-while not ended:
-    # Run 30 fps
-    clock.tick(30)
-    deltaTime = clock.get_time()
+    def loadFromImage(self,filename):
+        try:
+            image = pygame.image.load(filename)
+        except pygame.error, message:
+            print "Cannot load image: ", filename
+            raise SystemExit, message
 
-    if pygame.event.peek():
-        for event in pygame.event.get():
-            scene.tick(deltaTime, event)
-    else:
-        # no events - just update elements
-        scene.tick(deltaTime)
+            for y in range(1, image.get_height(), sizeOfBlock):
+                for x in range(1, image.get_width(), sizeOfBlock):
+                    color = image.get_at((x, y))
+                    location = [x, y]
 
-    # Clear screen
-    screen.blit(scene.getSurface(), (0,0))
+                    # block1_top
+                    if color == pygame.Color(255, 240, 0, 0):
+                        dummy=False;
 
-    # Update double buffered screen
-    pygame.display.flip()
+                    # block1_dirt
+                    elif color == pygame.Color(255, 0, 0, 0):
+                        dummy=False;
 
-pygame.quit()
+                    # block1_right
+                    elif color == pygame.Color(174, 140, 0, 0):
+                        dummy=False;
+
+                    # block1_right_side
+                    elif color == pygame.Color(211, 211, 211, 0):
+                        dummy=False;
+
+                    # block1_left
+                    elif color == pygame.Color(0, 0, 255, 0):
+                        dummy=False;
+
+                    # block1_left_side
+                    elif color == pygame.Color(0, 255, 255, 0):
+                        dummy=False;
+
+    def start(self):
+
+        self.loadFromImage("Levels/1.png")
+
+        while not self.ended:
+            # Run 30 fps
+            self.clock.tick(30)
+            deltaTime = self.clock.get_time()
+
+            if pygame.event.peek():
+                for event in pygame.event.get():
+                    self.scene.tick(deltaTime, event)
+            else:
+                # no events - just update elements
+                self.scene.tick(deltaTime)
+
+            # Clear screen
+            self.screen.blit(self.scene.getSurface(), (0,0))
+
+            # Update double buffered screen
+            pygame.display.flip()
+
+game = runGame()
+
+game.start()
