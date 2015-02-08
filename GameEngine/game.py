@@ -33,7 +33,7 @@ class runGame:
 
         pygame.mixer.init()
 
-        loadFromImage("levels/1.png")
+        loadFromImage("Levels/1.png")
 
         while not ended:
             # Run 30
@@ -57,8 +57,8 @@ class runGame:
             print "Cannot load image: ", filename
             raise SystemExit, message
 
-            for y in range(1, image.get_height(), 32):
-                for x in range(1, image.get_width(), 32):
+            for y in range(1, image.get_height(), sizeOfBlock):
+                for x in range(1, image.get_width(), sizeOfBlock):
                     color = image.get_at((x, y))
                     location = [x, y]
 
