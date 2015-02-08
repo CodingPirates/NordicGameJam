@@ -48,32 +48,23 @@ class Player (Element.Element):
             self.movementSpeed = -5
             setPosition(getPostion()[0]+self.movementSpeed, getPostion()[1])
 
-    def checkKeys ():
+    def checkKeys (keyEvent):
 
-    	for event in pygame.event.get():
+        if keyEvent.type == KEYDOWN:
 
-	        if event.type == KEYDOWN:
+            if (keyEvent.key == K_LEFT):
+            	control = -1
 
-	        	if event.type == QUIT:
+            elif (keyEvent.key == K_RIGHT):
+            	control = 1
 
-	                    pygame.quit ()
-
-	                    sys.exit ()
-
-	            if (event.key == K_LEFT):
-
-	            	control = -1
-
-	            elif (event.key == K_RIGHT):
-
-	            	control = 1
-
-	            else
-
-	            	control = 0
+        elif (keyEvent.type == KEYUP):
+            if (keyEvent.key == K_LEFT or keyEvent.key == K_RIGHT):
+                control = 0
 
     def tick(self, deltaTime, keyEvent=False):
 
         self.anim(deltaTime)
         self.updatePos(deltaTime)
-        self.checkKeys ()
+        if keyEvent is not False:
+            self.checkKeys (keyEvent)

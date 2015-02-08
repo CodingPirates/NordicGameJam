@@ -10,7 +10,7 @@ class Scene():
         playerImage = playerImage.convert()
         thePlayer = player.Player(20, 60, playerImage.get_size(), playerImage, 11)
         self.elements = [thePlayer]
-        self.viewport = Viewport.Viewport(thePlayer)
+        self.viewport = Viewport.Viewport(thePlayer, self)
 
     def addElement(self, element):
         element.setScene(this)

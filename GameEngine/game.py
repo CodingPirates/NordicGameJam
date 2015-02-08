@@ -79,6 +79,10 @@ class runGame:
 
             if pygame.event.peek():
                 for event in pygame.event.get():
+                    if event.type == QUIT:
+                       pygame.quit ()
+                       sys.exit ()
+
                     self.scene.tick(deltaTime, event)
             else:
                 # no events - just update elements
