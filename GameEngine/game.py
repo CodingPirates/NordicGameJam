@@ -90,6 +90,8 @@ class runGame:
             # Update double buffered screen
             pygame.display.flip()
 
+            
+
 game = runGame()
 
 game.start()

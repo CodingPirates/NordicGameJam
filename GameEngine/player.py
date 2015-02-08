@@ -39,7 +39,9 @@ class Player (Element.Element):
     def updatePos(self, deltaTime):
         if self.movementSpeed < 0.1 and self.movementSpeed > -0.1:
             self.movementSpeed = 0
-            self.movementSpeed += self.movementAcc * deltaTime * self.control
+
+        self.movementSpeed += self.movementAcc * deltaTime * self.control
+        
         if self.movementSpeed > self.maxSpeed:
             self.vmovementSpeed = 5
         elif self.movementSpeed < -self.maxSpeed:
