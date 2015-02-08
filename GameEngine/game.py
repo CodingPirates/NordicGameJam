@@ -90,6 +90,14 @@ class runGame:
             # Update double buffered screen
             pygame.display.flip()
 
+            for event in pygame.event.get ():
+
+                if event.type == QUIT:
+
+                    pygame.quit ()
+
+                    sys.exit () 
+
 game = runGame()
 
 game.start()
