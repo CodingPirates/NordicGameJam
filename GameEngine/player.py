@@ -11,8 +11,6 @@ class Player (Element):
 	animMode = "still"
 
 	def anim (deltaTime):
-		
-		
 		if movementSpeed > 0:
 			if control == -1:
 				anim = "rightStop"
@@ -24,15 +22,16 @@ class Player (Element):
 			else
 				anim = "left"
 		
-		
 		animRightImages [0] = pygame.image.load ('/Graphics/Player/anim/right_walk/player_right_walk01.png')
 		animRightImages [1] = pygame.image.load ('/Graphics/Player/anim/right_walk/player_right_walk02.png')
 		animRightImages [2] = pygame.image.load ('/Graphics/Player/anim/right_walk/player_right_walk03.png')
+		animRightImages [3] = pygame.image.load ('/Graphics/Player/player_break01_right')
 
 		animLeftImages [0] = pygame.image.load ('/Graphics/Player/anim/left_walk/player_left_walk01.png')
 		animLeftImages [1] = pygame.image.load ('/Graphics/Player/anim/left_walk/player_left_walk02.png')
 		animLeftImages [2] = pygame.image.load ('/Graphics/Player/anim/left_walk/player_left_walk03.png')
-		
+		animLeftImages [3] = pygame.image.load ('/Graphics/Player/player_break01_left')
+
 	def updatePos(deltaTime):
 		if movementSpeed < 0.1 && movementSpeed > -0.1:
 		movementSpeed = 0
@@ -45,4 +44,4 @@ class Player (Element):
 
 	def tick(deltaTime, keyEvent=False):
 	    self.anim(deltaTime)
-            self.updatePos(deltaTime)
+        self.updatePos(deltaTime)
