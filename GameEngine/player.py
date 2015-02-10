@@ -2,7 +2,7 @@ import pygame, sys, Element
 
 class Player (Element.Element):
 
-    def __init__(self, xPos, yPos, size, image, layer):
+    def __init__(self, position, size, image, layer):
 
         # The player controls, no keyboard handling is done n this class all
         self.movementAcc = 2
@@ -22,7 +22,7 @@ class Player (Element.Element):
         self.animLeftImages.append(pygame.image.load ('Graphics/Player/anim/left_walk/player_left_walk03.png').convert())
         self.animLeftImages.append(pygame.image.load ('Graphics/Player/player_break01_left.png').convert())
 
-        super(Player, self).__init__(xPos, yPos, size, image, layer)
+        super(Player, self).__init__(position, size, image, layer)
 
     def anim (self, deltaTime):
         if self.movementSpeed > 0:
@@ -35,13 +35,13 @@ class Player (Element.Element):
                 self.anim = "leftStop"
             else:
                 self.anim = "left"
-        
+
     def updatePos(self, deltaTime):
         if self.movementSpeed < 0.1 and self.movementSpeed > -0.1:
             self.movementSpeed = 0
 
         self.movementSpeed += self.movementAcc * deltaTime * self.control
-        
+
         if self.movementSpeed > self.maxSpeed:
             self.vmovementSpeed = 5
         elif self.movementSpeed < -self.maxSpeed:

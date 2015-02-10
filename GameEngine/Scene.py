@@ -6,21 +6,32 @@ import Viewport
 class Scene():
     def __init__(self):
         # empty list of elements
-        playerImage = pygame.image.load('./Graphics/Player/player_standing.png')
-        playerImage = playerImage.convert()
-        thePlayer = player.Player(20, 60, playerImage.get_size(), playerImage, 11)
-        self.elements = [thePlayer]
-        self.viewport = Viewport.Viewport(thePlayer, self)
+        self.elements = []
+        self.viewport = Viewport.Viewport(self)
 
     def addElement(self, element):
-        element.setScene(this)
-        this.elements.add(element)
+        element.setScene(self)
+        self.elements.append(element)
+
+        def layerSort(element):
+            return element.getLayer()
+
+        # keep elements sorted in layer order
+        self.elements.sort(key=layerSort)
+
+        print("added element at " + str(element.getPosition()))
 
     def removeElement(self, element):
         elements.remove(element)
 
-    def getSurface(self):
-        return self.viewport.getSurface()
+    def getElements(self):
+        return self.elements
+
+    def getSize(self):
+        return (2048, 768)
+
+    def render(self, deltaTime, display):
+        return self.viewport.render(deltaTime, display)
 
     def tick(self, deltaTime, keyEvent=False):
         # iterate over all elements and update their state

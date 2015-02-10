@@ -1,8 +1,10 @@
+import pygame
+
 # This class is used for creating screen elements
 class Element(object):
 
-	def __init__(self, xPos, yPos, size, image, layer):
-		self.pos   = (xPos,yPos)
+	def __init__(self, position, size, image, layer):
+		self.position = position
 		self.size  = size
 		self.image = image
 		self.layer = layer
@@ -10,13 +12,16 @@ class Element(object):
 	def setScene(self, scene):
 		self.scene = scene
 
+	def setPosition(self, Newpos):
+		self.pos = newPos
+
 	# get get lower left pixel position
 	def getPosition(self):
-		return self.pos
+		return self.position
 
 	# get box surrounding element (the size of element)
-	def getBoundingBox(self):
-		return self.size
+	def getRect(self):
+		return pygame.Rect(self.image.get_rect(bottomleft=self.position))
 
 	# get the current Image for this element
 	def getSurface(self):
@@ -31,12 +36,6 @@ class Element(object):
 	def getLayer(self):
 		return self.layer
 
-	def setPosition(self, Newpos):
-		if (newPos[0] < 0 or newPos[0] > 1024):
-			raise Exception("You gone fucked with the x postion")
-		else:
-			pos[0] = newPos[0]
-			pos[1] = newPos[1]
 
 	def setSurfaceAndBox(self, image, size):
 		self.image = image
@@ -44,4 +43,5 @@ class Element(object):
 
 	# update all element data (delta time is in milliseconds)
 	# keyEvent is only if key has been pressed
-	#def tick(deltaTime, keyEvent=False):
+	def tick(deltaTime, keyEvent=False):
+		return None

@@ -8,15 +8,16 @@ import random
 import math
 import pygame
 import Scene
+import sys
+import player
+import Element
+import time
 
 class runGame:
     def __init__(self):
         # Screen size
         screen_width = 1024
         screen_height = 768
-
-        # Size of block
-        sizeOfBlock = 32
 
         # Screen size
         self.screen = pygame.display.set_mode([screen_width, screen_height])
@@ -33,44 +34,65 @@ class runGame:
         self.clock = pygame.time.Clock()
 
     def loadFromImage(self,filename):
+        print("Loading level: " + filename)
         try:
             image = pygame.image.load(filename)
-        except pygame.error, message:
-            print "Cannot load image: ", filename
-            raise SystemExit, message
+        except (pygame.error, message):
+            print ("Cannot load image: " + filename)
+            raise SystemExit(message)
 
-            for y in range(1, image.get_height(), sizeOfBlock):
-                for x in range(1, image.get_width(), sizeOfBlock):
-                    color = image.get_at((x, y))
-                    location = [x, y]
+        print("Dimension: " + str(image.get_size()))
 
-                    # block1_top
-                    if color == pygame.Color(255, 240, 0, 0):
-                        dummy = False
+        for y in range(0, image.get_height()):
+            for x in range(0, image.get_width()):
+                location = (x, y)
+                color = image.get_at(location)
 
-                    # block1_dirt
-                    elif color == pygame.Color(255, 0, 0, 0):
-                        dummy = False
+                if color == pygame.Color(255, 255, 255, 255):
+                    continue
 
-                    # block1_right
-                    elif color == pygame.Color(174, 140, 0, 0):
-                        dummy = False
+                # player
+                elif color == pygame.Color(0, 255, 255, 255):
+                    Elementimage = pygame.image.load ('Graphics/Player/player_standing.png').convert()
+                    self.scene.addElement(player.Player(location, Elementimage.get_size(), Elementimage, 11))
 
-                    # block1_right_side
-                    elif color == pygame.Color(211, 211, 211, 0):
-                        dummy = False
+                # block1_top
+                elif color == pygame.Color(255, 240, 0, 0):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_dirt.png').convert()
+                    self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
-                    # block1_left
-                    elif color == pygame.Color(0, 0, 255, 0):
-                        dummy = False
+                # block1_dirt
+                elif color == pygame.Color(255, 0, 0, 255):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_dirt.png').convert()
+                    self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
-                    # block1_left_side
-                    elif color == pygame.Color(0, 255, 255, 0):
-                        dummy = False
+                # block1_right
+                elif color == pygame.Color(174, 140, 0, 255):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_right_grass.png').convert()
+                    self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
-                    # block2
-                    elif color == pygame.Color(0, 0, 0, 0):
-                        dummy = False
+                # block1_right_side
+                elif color == pygame.Color(211, 211, 211, 255):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_right_grass_side.png').convert()
+                    self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
+
+                # block1_left
+                elif color == pygame.Color(0, 0, 255, 255):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_left.png').convert()
+                    self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
+
+                # block1_left_side
+                #elif color == pygame.Color(0, 255, 255, 255):
+                #    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_left_grass_side.png').convert()
+                #    self.scene.addElement(Element.Element(location, ElementImage, ElementImage.get_size(), 11))
+
+                # block2
+                elif color == pygame.Color(0, 0, 0, 255):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block2/block2.png').convert()
+                    self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
+
+                else:
+                    print ("WARNING: unknow blocktype on position " + str(location) + " color was: " + str(color))
 
     def start(self):
 
@@ -83,7 +105,7 @@ class runGame:
 
             if pygame.event.peek():
                 for event in pygame.event.get():
-                    if event.type == QUIT:
+                    if event.type == pygame.QUIT:
                        pygame.quit ()
                        sys.exit ()
 
@@ -92,8 +114,8 @@ class runGame:
                 # no events - just update elements
                 self.scene.tick(deltaTime)
 
-            # Clear screen
-            self.screen.blit(self.scene.getSurface(), (0,0))
+            # Render screen
+            self.scene.render(deltaTime, self.screen)
 
             # Update double buffered screen
             pygame.display.flip()
@@ -101,5 +123,4 @@ class runGame:
 
 
 game = runGame()
-
 game.start()
