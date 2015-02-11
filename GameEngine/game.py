@@ -57,8 +57,8 @@ class runGame:
                     self.scene.addElement(player.Player(location, Elementimage.get_size(), Elementimage, 11))
 
                 # block1_top
-                elif color == pygame.Color(255, 240, 0, 0):
-                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_dirt.png').convert()
+                elif color == pygame.Color(255, 240, 0, 255):
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_mid_grass.png').convert()
                     self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
                 # block1_dirt
@@ -78,7 +78,7 @@ class runGame:
 
                 # block1_left
                 elif color == pygame.Color(0, 0, 255, 255):
-                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_left.png').convert()
+                    ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_left_grass.png').convert()
                     self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
                 # block1_left_side
