@@ -67,12 +67,12 @@ class runGame:
                     self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
                 # block1_right
-                elif color == pygame.Color(174, 140, 0, 255):
+                elif color == pygame.Color(170, 240, 0, 255):
                     ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_right_grass.png').convert()
                     self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
                 # block1_right_side
-                elif color == pygame.Color(211, 211, 211, 255):
+                elif color == pygame.Color(221, 221, 221, 255):
                     ElementImage = pygame.image.load ('Graphics/Blocks/block1/block1_right_grass_side.png').convert()
                     self.scene.addElement(Element.Element(location, ElementImage.get_size(), ElementImage, 11))
 
