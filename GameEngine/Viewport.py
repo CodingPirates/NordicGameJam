@@ -38,6 +38,8 @@ class Viewport:
         elif(self.position[1] + viewportSize[1] > self.scene.getSize()[1]):
             self.position = (self.position[0], self.scene.getSize()[1] - viewportSize[1])
 
+        display.fill(pygame.Color(0,0,0,0))
+
         # iterate all elements and draw them on the screen
         for element in self.scene.getElements():
             display.blit(element.getSurface(), element.getRect())

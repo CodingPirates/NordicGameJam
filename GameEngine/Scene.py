@@ -36,9 +36,5 @@ class Scene():
     def tick(self, deltaTime, keyEvent=False):
         # iterate over all elements and update their state
         for currentElement in self.elements:
-            currentElement.tick(deltaTime)
-
-    def control(self, event):
-        # iterate over all elements and update their state
-        for currentElement in self.elements:
             currentElement.tick(deltaTime, keyEvent)
+

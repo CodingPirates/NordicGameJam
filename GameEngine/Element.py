@@ -12,8 +12,8 @@ class Element(object):
 	def setScene(self, scene):
 		self.scene = scene
 
-	def setPosition(self, Newpos):
-		self.pos = newPos
+	def setPosition(self, newPos):
+		self.position = newPos
 
 	# get get lower left pixel position
 	def getPosition(self):
@@ -43,5 +43,5 @@ class Element(object):
 
 	# update all element data (delta time is in milliseconds)
 	# keyEvent is only if key has been pressed
-	def tick(deltaTime, keyEvent=False):
+	def tick(self, deltaTime, keyEvent=False):
 		return None
