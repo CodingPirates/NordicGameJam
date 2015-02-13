@@ -27,14 +27,14 @@ class Player (Element.Element):
     def anim (self, deltaTime):
         if self.movementSpeed > 0:
             if self.control == -1:
-                self.anim = "rightStop"
+                self.animMode = "rightStop"
             else:
-                self.anim = "right"
+                self.animMode = "right"
         elif self.movementSpeed < 0:
             if self.control == 1:
-                self.anim = "leftStop"
+                self.animMode = "leftStop"
             else:
-                self.anim = "left"
+                self.animMode = "left"
 
     def updatePos(self, deltaTime):
         if self.movementSpeed < 0.1 and self.movementSpeed > -0.1:
@@ -43,27 +43,30 @@ class Player (Element.Element):
         self.movementSpeed += self.movementAcc * deltaTime * self.control
 
         if self.movementSpeed > self.maxSpeed:
-            self.vmovementSpeed = 5
+            self.movementSpeed = 5
         elif self.movementSpeed < -self.maxSpeed:
             self.movementSpeed = -5
-            setPosition(getPostion()[0]+self.movementSpeed, getPostion()[1])
+        
+        print(self.movementSpeed)    
+        self.setPosition((self.getPosition()[0]+self.movementSpeed, self.getPosition()[1]))
 
-    def checkKeys (keyEvent):
+    def checkKeys (self, keyEvent):
 
-        if keyEvent.type == KEYDOWN:
+        if keyEvent.type == pygame.KEYDOWN:
 
-            if (keyEvent.key == K_LEFT):
-            	control = -1
+            if (keyEvent.key == pygame.K_LEFT):
+            	self.control = -1
 
-            elif (keyEvent.key == K_RIGHT):
-            	control = 1
+            elif (keyEvent.key == pygame.K_RIGHT):
+            	self.control = 1
 
-        elif (keyEvent.type == KEYUP):
-            if (keyEvent.key == K_LEFT or keyEvent.key == K_RIGHT):
-                control = 0
+        elif (keyEvent.type == pygame.KEYUP):
+            if (keyEvent.key == pygame.K_LEFT or keyEvent.key == pygame.K_RIGHT):
+                self.control = 0
+
+        print("control changed: " + str(self.control))
 
     def tick(self, deltaTime, keyEvent=False):
-
         self.anim(deltaTime)
         self.updatePos(deltaTime)
         if keyEvent is not False:
